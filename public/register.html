@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>Registrace</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Registrace</h1>
+  <form id="registerForm">
+    <input type="text" name="username" placeholder="Uživatelské jméno" required />
+    <input type="password" name="password" placeholder="Heslo" required />
+    <label>
+      <input type="checkbox" name="agree" required />
+      Souhlasím, že mnou vložená data mohou být využita pro trénink AI
+    </label>
+    <button type="submit">Registrovat</button>
+  </form>
+  <p id="message"></p>
+  <p><a href="index.html">Zpět na přihlášení</a></p>
+
+  <script>
+    const form = document.getElementById('registerForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = {
+        username: form.username.value,
+        password: form.password.value,
+        agree: form.agree.checked
+      };
+
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      document.getElementById('message').innerText = result.message;
+
+      if (res.ok) {
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1500);
+      }
+    });
+  </script>
+</body>
+</html>

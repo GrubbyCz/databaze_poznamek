@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>Přihlášení</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Přihlášení</h1>
+  <form id="loginForm">
+    <input type="text" name="username" placeholder="Uživatelské jméno" required />
+    <input type="password" name="password" placeholder="Heslo" required />
+    <button type="submit">Přihlásit</button>
+  </form>
+  <p id="message"></p>
+  <p><a href="register.html">Nemáte účet? Zaregistrujte se</a></p>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = {
+        username: form.username.value,
+        password: form.password.value
+      };
+
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      document.getElementById('message').innerText = result.message;
+
+      if (res.ok) {
+        localStorage.setItem('username', data.username);
+        setTimeout(() => {
+          window.location.href = 'notes.html';
+        }, 1500);
+      }
+    });
+  </script>
+</body>
+</html>

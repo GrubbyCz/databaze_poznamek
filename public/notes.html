@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>Moje poznámky</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Moje poznámky</h1>
+
+  <form id="noteForm">
+    <input type="text" name="title" placeholder="Nadpis" required />
+    <textarea name="text" placeholder="Text poznámky" required></textarea>
+    <button type="submit">Přidat poznámku</button>
+  </form>
+
+  <label>
+    <input type="checkbox" id="filterImportant" />
+    Zobrazit jen důležité
+  </label>
+
+  <ul id="notesList"></ul>
+
+  <hr />
+  <button id="deleteAccountBtn">Zrušit účet</button>
+  <button onclick="logout()">Odhlásit se</button>
+
+  <p id="message"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>

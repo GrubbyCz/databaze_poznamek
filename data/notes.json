@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "2a35f80b-1de4-4d32-a0ef-e9c227d7296b",
+    "username": "adam",
+    "title": "Dulezita poznamka",
+    "text": "adfasefe feasf wsedgf sdfg dsgf ",
+    "date": "2025-05-05T08:12:19.280Z",
+    "important": true
+  },
+  {
+    "id": "d8a2e657-a3b4-47af-8ff7-355af6355836",
+    "username": "adam",
+    "title": "nedulezita poznamka",
+    "text": "adf aefa",
+    "date": "2025-05-05T08:12:33.231Z",
+    "important": false
+  }
+]
